@@ -55,7 +55,7 @@ text/plain → Ex. application/json이면 preflight 발생
 
 ## 꼬리 질문
 1. CORS 문제를 해결하기 위해 백엔드에서 어떤 설정을 했는지 구체적으로 설명해 주세요.
-2. 와일드카드(*)를 사용하면 어떤 문제가 발생할 수 있나요?
+2. Access-Control-Allow-Origin을 *로 설정하면 어떤 문제가 발생할 수 있나요?
 3. Access-Control-Allow-Credentials를 true로 설정할 때 주의해야 할 점은 무엇인가요?
 
 <br>
