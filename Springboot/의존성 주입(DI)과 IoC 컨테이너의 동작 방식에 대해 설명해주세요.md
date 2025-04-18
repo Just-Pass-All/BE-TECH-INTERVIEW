@@ -8,7 +8,7 @@
 
 ## 개념 정리
 ### IoC (Inversion of Control)
-- IoC(제어의 역전): 객체 생성 및 의존성 관리를 개발자가 아닌 프레임워크가 담당하는 것을 말한다.
+- 객체 생성 및 의존성 관리를 개발자가 아닌 프레임워크가 담당하는 것을 말한다.
 - 스프링에서는 IoC를 구현하기 위해 **IoC 컨테이너**를 제공한다.
 
 <br>
@@ -22,9 +22,9 @@
 <br>
 
 ### DI (Dependency Injection)
-- 객체가 필요한 의존 객체를 직접 생성하는 것이 아니라 외부로부터 주입받는 방식을 말한다.
 - IoC의 구현 방식 중 하나라고 할 수 있다.
-- 스프링에서는 **IoC 컨테이너(ApplicationContext)**가 객체 생성과 DI를 함께 담당한다.
+- 객체가 필요한 의존 객체를 직접 생성하는 것이 아니라 외부로부터 주입받는 방식을 말한다.
+- 스프링에서는 IoC 컨테이너(ApplicationContext)가 객체 생성과 DI를 함께 담당한다.
 
 #### DI 방식의 종류
 | 방식             | 설명                                                            |
@@ -35,6 +35,63 @@
 
 <br>
 
+### 예시 코드
+#### 1. 생성자 주입 방식
+> 가장 권장되는 방식
+```java
+@Component
+public class OrderService {
+
+    private final PaymentService paymentService;
+
+    @Autowired
+    public OrderService(PaymentService paymentService) {
+        this.paymentService = paymentService;
+    }
+}
+```
+- OrderService가 PaymentService에 의존하고 있으므로 생성자를 통해 의존성을 주입받는다.
+- `@Autowired`를 생략해도 스프링이 자동으로 인식한다. (생성자가 하나일 경우)
+- 불변 객체로 만들 수 있어 테스트 용이성과 안정성이 뛰어나다.
+- 필수 의존성 주입에 적합하며, 스프링 공식 문서에서도 권장한다.
+
+<br>
+
+#### 2. 필드 주입 방식
+```java
+@Component
+public class OrderService {
+
+    @Autowired
+    private PaymentService paymentService;
+}
+```
+- `@Autowired`를 필드에 직접 붙여 의존성을 주입한다.
+- 코드가 간결하다는 장점이 있지만, DI가 프레임워크에 완전히 의존하게 되어 테스트가 어렵고 유지보수하기 불편하다.
+- 필드가 final일 수 없으므로 객체 불변성을 해친다.
+- 테스트 코드에서 mock 객체를 주입하거나 생성자 호출이 불가능하므로 단위 테스트 시 좋지 않다.
+
+<br>
+
+#### 3. setter 주입 방식
+```java
+@Component
+public class OrderService {
+
+    private PaymentService paymentService;
+
+    @Autowired
+    public void setPaymentService(PaymentService paymentService) {
+        this.paymentService = paymentService;
+    }
+}
+```
+- `@Autowired`가 붙은 Setter 메서드를 통해 의존성을 주입한다.
+- 필수 의존성이라면 생성자 주입 방식이 더 적합하지만, 선택적으로 필요한 의존성일 경우 세터 주입을 활용할 수 있다.
+- 단점은 외부에서 Setter를 호출할 수 있게 열어두는 구조가 되므로 캡슐화가 약해질 수 있다.
+
+<br>
+
 ### IoC 컨테이너의 동작 흐름
 1. 설정 클래스 혹은 컴포넌트 스캔을 통해 Bean 정의 확인
 2. Bean 생성 및 초기화
@@ -42,7 +99,10 @@
 4. ApplicationContext에 Bean 등록
 5. 필요 시 주입된 Bean 사용
 
+<br>
 
 ## 꼬리 질문
 1. 결합도를 낮춘다는 것이 어떤 것인가요?
-2. 
+2. 의존성 주입 없이 직접 객체를 생성하면 어떤 문제가 발생할 수 있나요?
+3. @Component와 @Bean의 차이점은 무엇인가요?
+
