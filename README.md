@@ -30,8 +30,8 @@
 | 3주차 | 김중현 | [CORS란 무엇이며, 왜 필요하고 어떻게 동작하나요?](https://github.com/Just-Pass-All/BE-TECH-INTERVIEW/blob/main/Network/CORS%EB%9E%80%20%EB%AC%B4%EC%97%87%EC%9D%B4%EB%A9%B0%2C%20%EC%99%9C%20%ED%95%84%EC%9A%94%ED%95%98%EA%B3%A0%20%EC%96%B4%EB%96%BB%EA%B2%8C%20%EB%8F%99%EC%9E%91%ED%95%98%EB%82%98%EC%9A%94.md)  | 
 | 4주차 | 강연수 | [HTTP와 HTTPS의 차이는 무엇인가요?](https://github.com/Just-Pass-All/BE-TECH-INTERVIEW/blob/main/Network/HTTP%20vs%20HTTPS.md)  |
 | 4주차 |  강연수 | [웹소켓(WebSocket)은 어떻게 동작하고 언제 사용하나요](https://github.com/Just-Pass-All/BE-TECH-INTERVIEW/blob/main/Network/Websocket.md)  |
-| 5주차 | 강연수 | [RESTful API란 무엇인가요?]()  | 
-| 5주차 |  강연수 | [웹 서버 소프트웨어(Apache, Nginx)는 OSI 7계층 중 어디서 작동하는지 설명해주세요]()  |
+| 5주차 | 강연수 | [RESTful API란 무엇인가요?](https://github.com/Just-Pass-All/BE-TECH-INTERVIEW/blob/main/Network/RESTful%20API.md)  | 
+| 5주차 |  강연수 | [웹 서버 소프트웨어(Apache, Nginx)는 OSI 7계층 중 어디서 작동하는지 설명해주세요](https://github.com/Just-Pass-All/BE-TECH-INTERVIEW/blob/main/Network/%EC%9B%B9%20%EC%84%9C%EB%B2%84%20%EC%86%8C%ED%94%84%ED%8A%B8%EC%9B%A8%EC%96%B4(Apache%2C%20Nginx)%EB%8A%94%20OSI%207%EA%B3%84%EC%B8%B5%20%EC%A4%91%20%EC%96%B4%EB%94%94%EC%84%9C%20%EC%9E%91%EB%8F%99%ED%95%98%EB%8A%94%EC%A7%80%20%EC%84%A4%EB%AA%85%ED%95%B4%EC%A3%BC%EC%84%B8%EC%9A%94.md)  |
 
 <br>
 
