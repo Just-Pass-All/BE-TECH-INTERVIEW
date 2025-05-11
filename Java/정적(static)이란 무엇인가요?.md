@@ -105,11 +105,46 @@
     - 테스트 대상 메소드가 static이면 그 안에서 static 호출한 것도 진짜 호출이 되어서 단위 테스트가 어려움
     - static 변수나 static 상태를 가지고 있으면 상태 공유때문에 위험할 수 있음 → 예시: 병렬로 테스트할 때 예측 불가능한 테스트 실패 발생 가능
 
-## 꼬리 질문
-
 - static 변수는 왜 객체 생성 없이 접근 가능한가요?
+    
+    static 변수는 클래스 변수이기 때문입니다. static 변수는 클래스를 로딩할 때 메서드 영역에 저장되고, 객체와 무관하게 클래스 자체에 속하게 됩니다. 그렇기 때문에 static 변수는 여러 객체가 공유할 수 있습니다.
+    
 - static을 사용하는 경우, 메모리 관리에 어떤 영향을 미치나요?
+    
+    정적 변수나 메서드는 클래스가 로드될 때 메모리에 올라가고, GC 대상이 아니기 때문에 메모리 누수 위험이 있습니다.
+    
 - static은 왜 상속과 다르게 동작하나요?
+    
+    ```java
+    class Parent {
+        static void staticMethod() {
+            System.out.println("Parent static");
+        }
+    
+        void instanceMethod() {
+            System.out.println("Parent instance");
+        }
+    }
+    
+    class Child extends Parent {
+        static void staticMethod() {
+            System.out.println("Child static");
+        }
+    
+        @Override
+        void instanceMethod() {
+            System.out.println("Child instance");
+        }
+    }
+    
+    Parent obj = new Child();
+    obj.staticMethod(); //Parent static
+    obj.instanceMethod(); //Child instance
+    ```
+    static은 클래스 레벨에서 동작하고 상속은 인스턴스(객체) 레벨에서 동작합니다. static에는 객체 다형성이 적용되지 않고, 숨겨진 형태로 동작합니다. 반면 인스턴스는 다형성이 적용됩니다.
+    
 - static 변수 초기화 시 주의사항은 무엇인가요?
+    정적 변수는 최초 로딩될 때 한 번만 초기화되며, 정적 변수로 선언되는 경우, 값을 초기화해주지 않으면 쓰레기값이 아니라 int의 경우에는 0 string은 null로 자동 초기화됩니다.
 
+## 참고 자료
 https://steady-coding.tistory.com/603
