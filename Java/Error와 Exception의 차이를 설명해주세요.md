@@ -60,7 +60,19 @@
 ## 꼬리질문
 
 - StackOverflowError를 막기 위한 프로그래밍적인 방법은 뭐가 있을까요?
+    
+    StackOverflowError는 스택 메모리 초과로 발생합니다. 재귀호출 시 종료 조건을 명확하게 설정하거나, 최대 깊이 제한을 두면 됩니다. 또는 JVM에 더 큰 스택 크기를 할당하는 것도 가능합니다.
+    
 - printStackTrace() 대신 실무에서는 어떤 로깅 방법을 쓰나요?
+    
+    로깅 프레임워크 (SLF4J, Log4j, Logback 등)을 사용해서 예외정보를 로깅합니다. printStackTrace는 제어가 힘들고 관리가 어렵기 때문에 사용하지 않습니다.
+    
 - Checked Exception을 모두 Unchecked로 던지는 게 편하지 않나요?
-
+    
+    checked exception은 IOException, SQLException같은 회복 가능한 오류는 가시적으로 잡을 수 있다는 장점이 있습니다. 또한 catch해서 예외 복구가 가능한 경우, checked로 처리하는 것이 좋습니다.
+    
+    그러나 실무에서는 현재 프레임워크들이 unchecked 기반으로 설계가 되어있고, unchecked로 보내는 것이 코드를 간결하게 유지할 수 있기 때문에 unchecked로 대부분의 예외를 처리합니다.
+    
+    [https://velog.io/@eastperson/Java의-Checked-Exception은-실수다-83omm70j](https://velog.io/@eastperson/Java%EC%9D%98-Checked-Exception%EC%9D%80-%EC%8B%A4%EC%88%98%EB%8B%A4-83omm70j)
+## 참고 자료
 [https://velog.io/@jipark09/Java-Error와-Exception-차이](https://velog.io/@jipark09/Java-Error%EC%99%80-Exception-%EC%B0%A8%EC%9D%B4)
